@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link type="text/css" rel="stylesheet" href="css/mystyles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tuition Reimbursement Management System</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper blue lighten-1">
+        <a href="index.html" class="brand-logo">BenCo</a>
+        <a href="#" data-target="mobileToggle" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="login.html">Employee</a></li>
+          <li><a href="login.html">Supervisor</a></li>
+          <li><a href="login.html">Benefit Coordinator</a></li>
+        </ul>
+      </div>
+    </nav>
+    <ul class="sidenav" id="mobileToggle">
+      <li><a href="login.html">Employee</a></li>
+      <li><a href="login.html">Supervisor</a></li>
+      <li><a href="login.html">Benefit Coordinator</a></li>
+    </ul>
+    <main>
+      <section class="container">
+        <div class="row">
+          <h2 class="grey-text text-darken-2">BenCO</h2>
+          <div class="divider"></div>
+          <h4 class="grey-text text-darken-2">
+            Reimbursement Form:
+          </h4>
+        </div>
+        <div class="row">
+          <div class="divider"></div>
+          <h6>Personal Information:</h6>
+        </div>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate" />
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate" />
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="address" type="text" class="validate" />
+                <label for="address">Address</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s4">
+                <input id="state" type="text" class="validate" />
+                <label for="state">State</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="zip" type="text" class="validate" />
+                <label for="zip">Zip Code</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="user_id" type="text" class="validate" />
+                <label for="user_id">Employee ID</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" />
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="divider"></div>
+              <h6>Information About Education:</h6>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="institution" type="text" class="validate" />
+                <label for="institution">Name of Institution</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="intaddress" type="text" class="validate" />
+                <label for="intaddress">Adress</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="intstate" type="text" class="validate" />
+                <label for="intstate">State</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="intzip" type="text" class="validate" />
+                <label for="intzip">Zip Code</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="program_name" type="text" class="validate" />
+                <label for="program_name">Program Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  id="start_date"
+                  type="text"
+                  class="validate datepicker"
+                />
+                <label for="start_date">Start Date</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="end_date" type="text" class="validate datepicker" />
+                <label for="end_date">End Date</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select multiple id="day_week">
+                  <option value="monday">Monday</option>
+                  <option value="tuesday">Tuesday</option>
+                  <option value="wednesday">Wednesday</option>
+                  <option value="thursday">Thursday</option>
+                  <option value="friday">Friday</option>
+                </select>
+                <label>Days of the Week</label>
+              </div>
+              <div class="input-field col s6">
+                <select multiple id="time_block">
+                  <option value="8:00am to 10:00pm">8:00am to 10:00pm</option>
+                  <option value="10:00am to 12:00m">10:00am to 12:00m</option>
+                  <option value="1:00pm to 3:00pm">1:00pm to 3:00pm</option>
+                  <option value="3:00pm to 5:00pm">3:00pm to 5:00pm</option>
+                </select>
+                <label>Time Block</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                  id="description"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="description">Description</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="cost" type="number" class="validate" />
+                <label for="cost">Cost</label>
+              </div>
+              <div class="input-field col s6">
+                <select id="grade_format">
+                  <option value="Letter Grade">Letter Grade</option>
+                  <option value="Pass Fail">Pass-Fail</option>
+                  <option value="Percentage">Percentage</option>
+                  <option value="Presentation">Presentation</option>
+                </select>
+                <label>Grade Format</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <select id="event_type">
+                  <option value="university">University Course</option>
+                  <option value="seminar">Seminar</option>
+                  <option value="cert_prep"
+                    >Certification Preparation Class</option
+                  >
+                  <option value="certification">Certification</option>
+                  <option value="training">Technical Training</option>
+                  <option value="other">Other</option>
+                </select>
+                <label>Type of Event</label>
+              </div>
+              <div class="input-field col s6">
+                <input
+                  disabled
+                  id="reimbursement_amount"
+                  type="text"
+                  class="validate"
+                />
+                <!-- <label for="reimbursement_amount"
+                  >Potential Reimbursement</label
+                > -->
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                  id="justification"
+                  class="materialize-textarea"
+                ></textarea>
+                <label for="justification">Work-Related Justification</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="file-field input-field">
+                <div class="btn blue lighten-1">
+                  <span>File</span>
+                  <input type="file" multiple />
+                </div>
+                <div class="file-path-wrapper">
+                  <input
+                    class="file-path validate"
+                    type="text"
+                    placeholder="Upload one or more files"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <a
+                  class="waves-effect waves-light blue lighten-1 btn right"
+                  id="submit"
+                  >Submit</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="page-footer blue lighten-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">BenCo</h5>
+            <p class="grey-text text-lighten-4">
+              Learn. Grow. Achieve.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          � 2020 Martinez Media
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/jsstyle.js"></script>
+    <script type="text/javascript" src="js/reimbursementFrom.js"></script>
+  </body>
+</html>
