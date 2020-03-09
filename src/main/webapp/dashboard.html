@@ -38,49 +38,36 @@
       <li><a href="/trms/form">Reimbursement Form</a></li>
       <li><a href="/trms/login">Login</a></li>
     </ul>
+
     <main>
-      <section class="container">
-        <div class="row">
-          <h3 class="grey-text text-darken-2">BenCO</h3>
-          <div class="divider"></div>
-          <h6 class="grey-text text-darken-2">
-            Please type your username and password:
-          </h6>
-        </div>
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="username" type="text" class="validate" />
-                <label for="username">Username</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="password" type="password" class="validate" />
-                <label for="password">Password</label>
-              </div>
-            </div>
-            <div class="row">
-              <div id="login_modal" class="modal">
-                <div class="modal-content">
-                  <p>Incorrect username or password</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
-                </div>
-              </div>
-              <div class="input-field col s12">
-                <a
-                  class="waves-effect waves-light blue lighten-1 btn right"
-                  id="login"
-                  >Login</a
-                >
-              </div>
-            </div>
-          </form>
-        </div>
+      <section >
+        <h4>
+          Welcome <span id="user">User</span>!
+        </h4>
       </section>
+      <div class="divider"></div>
+      <section >
+        <h6>Reimbursements:</h6>
+<table class="responsive-table">
+<thead>
+  <tr>
+    <th>ID:</th>
+    <th>Employee:</th>
+    <th>Institution:</th>
+    <th>Program:</th>
+    <th>Start Date:</th>
+    <th>End Date:</th>
+    <th>Week Days:</th>
+    <th>Time Block:</th>
+    <th>Cost:</th>
+    <th>Reimbursement:</th>
+    <th>Submitted:</th>
+    <th>Status:</th>
+  </tr>
+</thead>
+<tbody id="reimbursement_table"></tbody>
+</table>
+</section>
     </main>
     <footer class="page-footer blue lighten-1">
       <div class="container">
@@ -102,6 +89,6 @@
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/jsstyle.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
   </body>
 </html>

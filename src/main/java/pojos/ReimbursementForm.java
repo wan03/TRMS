@@ -28,6 +28,7 @@ public class ReimbursementForm {
 	private double reimbursementAmount;
 	private String justification;
 	private String status;
+	private LocalDate submitted;
 	private String file;
 	
 	public int getReimbursementId() {
@@ -174,6 +175,12 @@ public class ReimbursementForm {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public LocalDate getSubmitted() {
+		return submitted;
+	}
+	public void setSubmitted(LocalDate submitted) {
+		this.submitted = submitted;
+	}
 	public String getFile() {
 		return file;
 	}
@@ -184,7 +191,7 @@ public class ReimbursementForm {
 			String zip, int userId, String email, String institutionName, String institutionaddress,
 			String institutionstate, String institutionzip, String programName, LocalDate startDate, LocalDate endDate,
 			String weekDays, String timeBlock, String description, double cost, String gradeFormat,
-			String eventType, double reimbursementAmount, String justification, String status, String file) {
+			String eventType, double reimbursementAmount, String justification, String status, LocalDate submitted, String file) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.firstName = firstName;
@@ -210,6 +217,7 @@ public class ReimbursementForm {
 		this.reimbursementAmount = reimbursementAmount;
 		this.justification = justification;
 		this.status = status;
+		this.submitted = submitted;
 		this.file = file;
 	}
 	
@@ -217,7 +225,7 @@ public class ReimbursementForm {
 			String zip, int userId, String email, String institutionName, String institutionaddress,
 			String institutionstate, String institutionzip, String programName, LocalDate startDate, LocalDate endDate,
 			String weekDays, String timeBlock, String description, double cost, String gradeFormat,
-			String eventType, double reimbursementAmount, String justification, String status) {
+			String eventType, double reimbursementAmount, String justification, String status, LocalDate submitted) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.firstName = firstName;
@@ -243,6 +251,7 @@ public class ReimbursementForm {
 		this.reimbursementAmount = reimbursementAmount;
 		this.justification = justification;
 		this.status = status;
+		this.submitted = submitted;
 	}
 	public ReimbursementForm() {
 		super();

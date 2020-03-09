@@ -73,6 +73,14 @@ public class User {
 		this.userType = userType;
 		this.position = position;
 	}
+	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
+	
 	public User() {
 		super();
 	}

@@ -15,12 +15,12 @@ public class ReimbursementFormDAO {
 	
 	private Connection conn = ConnectionFactory.getConnection();
 	
-	private static final String REIMBURSEMENT_TABLE = "reimbursement_form";
+	private static final String REIMBURSEMENT_TABLE = "reimbursement";
 	private static final String SELECT_ALL_FORMS = "SELECT * FROM " + REIMBURSEMENT_TABLE;
 	private static final String INSERT_FORM = "INSERT INTO " 
 	+ REIMBURSEMENT_TABLE + 
 	" (first_name, last_name, address, state, zip, user_id, email, institution_name, institution_address, institution_state, institution_zip, program_name, start_date, end_date, week_days, time_block, description, cost, grade_format, event_type, reimbursement_amount, justification, status) "
-			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+			+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 	private static final String UPDATE_FORM = "UPDATE " + REIMBURSEMENT_TABLE + " SET ?=? WHERE id =?";
 	
 	
@@ -34,7 +34,7 @@ public class ReimbursementFormDAO {
 			while(rs.next()) {
 				forms.add(
 						new ReimbursementForm(
-								rs.getInt("id"), 
+								rs.getInt("reimbid"), 
 								rs.getString("first_name"), 
 								rs.getString("last_name"), 
 								rs.getString("address"), 
@@ -57,7 +57,8 @@ public class ReimbursementFormDAO {
 								rs.getString("event_type"), 
 								rs.getDouble("reimbursement_amount"), 
 								rs.getString("justification"), 
-								rs.getString("status"), 
+								rs.getString("status"),
+								rs.getDate("submitted").toLocalDate(),
 								rs.getString("file")));
 			}
 			
@@ -78,7 +79,7 @@ List<ReimbursementForm> forms = new ArrayList<ReimbursementForm>();
 			while(rs.next()) {
 				forms.add(
 						new ReimbursementForm(
-								rs.getInt("id"), 
+								rs.getInt("reimbid"), 
 								rs.getString("first_name"), 
 								rs.getString("last_name"), 
 								rs.getString("address"), 
@@ -101,7 +102,8 @@ List<ReimbursementForm> forms = new ArrayList<ReimbursementForm>();
 								rs.getString("event_type"), 
 								rs.getDouble("reimbursement_amount"), 
 								rs.getString("justification"), 
-								rs.getString("status"), 
+								rs.getString("status"),
+								rs.getDate("submitted").toLocalDate(),
 								rs.getString("file")));
 			}
 			
@@ -122,7 +124,7 @@ List<ReimbursementForm> forms = new ArrayList<ReimbursementForm>();
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				form =			new ReimbursementForm(
-								rs.getInt("id"), 
+								rs.getInt("reimbid"), 
 								rs.getString("first_name"), 
 								rs.getString("last_name"), 
 								rs.getString("address"), 
@@ -145,7 +147,8 @@ List<ReimbursementForm> forms = new ArrayList<ReimbursementForm>();
 								rs.getString("event_type"), 
 								rs.getDouble("reimbursement_amount"), 
 								rs.getString("justification"), 
-								rs.getString("status"), 
+								rs.getString("status"),
+								rs.getDate("submitted").toLocalDate(),
 								rs.getString("file"));
 			}
 			
@@ -184,6 +187,7 @@ List<ReimbursementForm> forms = new ArrayList<ReimbursementForm>();
 			stmt.setDouble(22, form.getReimbursementAmount());
 			stmt.setString(23, form.getJustification());
 			stmt.setString(24, "pending");
+			stmt.setDate(25, Date.valueOf(form.getSubmitted()));
 			
 			stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -203,7 +207,7 @@ public void updateForm (String column, String value, int id) {
 			
 			stmt.executeUpdate();
 		} catch (SQLException e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 	}

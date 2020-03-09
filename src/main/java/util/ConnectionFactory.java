@@ -25,10 +25,10 @@ public class ConnectionFactory {
 	private ConnectionFactory() {
 		
 		//TODO create new env variables
-		String databaseURL = System.getenv("dealership_URL");
-		url = "jdbc:postgresql://" + databaseURL + ":5432/dealership";
-		username = System.getenv("dealership_DB_username");
-		password = System.getenv("dealership_postgress_pass");
+		String databaseURL = System.getenv("trms_DB_url");
+		url = "jdbc:postgresql://" + databaseURL + ":5432/trms?currentSchema=trmstest";
+		username = System.getenv("trms_DB_username");
+		password = System.getenv("trms_DB_pass");
 		
 	}
 	
