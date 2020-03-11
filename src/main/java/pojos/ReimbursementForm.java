@@ -1,6 +1,8 @@
 package pojos;
 
 import java.time.LocalDate;
+import util.DateHandler;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class ReimbursementForm {
 	
@@ -8,16 +10,20 @@ public class ReimbursementForm {
 	private String firstName;
 	private String lastName;
 	private String address;
+	private String city;
 	private String state;
 	private String zip;
 	private int userId;
 	private String email;
 	private String institutionName;
 	private String institutionaddress;
+	private String institutioncity;
 	private String institutionstate;
 	private String institutionzip;
 	private String programName;
+	@JsonDeserialize(using = DateHandler.class)
 	private LocalDate startDate;
+	@JsonDeserialize(using = DateHandler.class)
 	private LocalDate endDate;
 	private String weekDays;
 	private String timeBlock;
@@ -28,6 +34,7 @@ public class ReimbursementForm {
 	private double reimbursementAmount;
 	private String justification;
 	private String status;
+	private String informationRequest;
 	private LocalDate submitted;
 	private String file;
 	
@@ -54,6 +61,12 @@ public class ReimbursementForm {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
 	}
 	public String getState() {
 		return state;
@@ -90,6 +103,12 @@ public class ReimbursementForm {
 	}
 	public void setInstitutionaddress(String institutionaddress) {
 		this.institutionaddress = institutionaddress;
+	}
+	public String getInstitutioncity() {
+		return institutioncity;
+	}
+	public void setInstitutioncity(String institutioncity) {
+		this.institutioncity = institutioncity;
 	}
 	public String getInstitutionstate() {
 		return institutionstate;
@@ -175,6 +194,12 @@ public class ReimbursementForm {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getInformationRequest() {
+		return informationRequest;
+	}
+	public void setInformationRequest(String informationRequest) {
+		this.informationRequest = informationRequest;
+	}
 	public LocalDate getSubmitted() {
 		return submitted;
 	}
@@ -187,22 +212,24 @@ public class ReimbursementForm {
 	public void setFile(String file) {
 		this.file = file;
 	}
-	public ReimbursementForm(int reimbursementId, String firstName, String lastName, String address, String state,
-			String zip, int userId, String email, String institutionName, String institutionaddress,
+	public ReimbursementForm(int reimbursementId, String firstName, String lastName, String address, String city, String state,
+			String zip, int userId, String email, String institutionName, String institutionaddress, String institutioncity,
 			String institutionstate, String institutionzip, String programName, LocalDate startDate, LocalDate endDate,
 			String weekDays, String timeBlock, String description, double cost, String gradeFormat,
-			String eventType, double reimbursementAmount, String justification, String status, LocalDate submitted, String file) {
+			String eventType, double reimbursementAmount, String justification, String status, String informationRequest, LocalDate submitted, String file) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
+		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.userId = userId;
 		this.email = email;
 		this.institutionName = institutionName;
 		this.institutionaddress = institutionaddress;
+		this.institutioncity = institutioncity;
 		this.institutionstate = institutionstate;
 		this.institutionzip = institutionzip;
 		this.programName = programName;
@@ -217,13 +244,14 @@ public class ReimbursementForm {
 		this.reimbursementAmount = reimbursementAmount;
 		this.justification = justification;
 		this.status = status;
+		this.informationRequest = informationRequest;
 		this.submitted = submitted;
 		this.file = file;
 	}
 	
-	public ReimbursementForm(int reimbursementId, String firstName, String lastName, String address, String state,
+	public ReimbursementForm(int reimbursementId, String firstName, String lastName, String address, String city, String state,
 			String zip, int userId, String email, String institutionName, String institutionaddress,
-			String institutionstate, String institutionzip, String programName, LocalDate startDate, LocalDate endDate,
+			String institutionstate, String institutioncity, String institutionzip, String programName, LocalDate startDate, LocalDate endDate,
 			String weekDays, String timeBlock, String description, double cost, String gradeFormat,
 			String eventType, double reimbursementAmount, String justification, String status, LocalDate submitted) {
 		super();
@@ -231,12 +259,14 @@ public class ReimbursementForm {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
+		this.city = city;
 		this.state = state;
 		this.zip = zip;
 		this.userId = userId;
 		this.email = email;
 		this.institutionName = institutionName;
 		this.institutionaddress = institutionaddress;
+		this.institutioncity = institutioncity;
 		this.institutionstate = institutionstate;
 		this.institutionzip = institutionzip;
 		this.programName = programName;

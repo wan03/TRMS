@@ -13,11 +13,37 @@ public class ReimbursementFormService {
 		formDao.insertForm(form);
 	}
 	
-	public List<ReimbursementForm> getReimbursements(){
+	public List<ReimbursementForm> getAllReimbursements(){
 		
 		List <ReimbursementForm> forms = formDao.retrieveForms();
 		
 		return forms;
+		
+	}
+	
+	public ReimbursementForm getReimbursementById(int reimId) {
+		
+		ReimbursementForm form = formDao.retrieveForm(reimId);
+		return form;
+	}
+	
+	public List<ReimbursementForm> getReimbursementByUserId(int userId) {
+		
+		List<ReimbursementForm> forms = formDao.retrieveForms(userId);
+		return forms;
+	}
+	
+	public void approveReimbursement (String value, int id) {
+		
+		formDao.updateForm("status", value, id);
+	}
+	
+	public void informationRequest (String value, int id) {
+		
+		formDao.updateForm("information_request", value, id);
+	}
+	
+	public void determineAvailableReimbursement() {
 		
 	}
 

@@ -10,7 +10,6 @@ function calcAmount() {
 
   switch (eventType) {
     case "university":
-      console.log("object");
       $("#reimbursement_amount").val(formatMoney(cost * 0.8));
       break;
     case "seminar":
@@ -63,26 +62,58 @@ function sendForm() {
   form.firstName = $("#first_name").val();
   form.lastName = $("#last_name").val();
   form.address = $("#address").val();
+  form.city = $("#city").val();
   form.state = $("#state").val();
   form.zip = $("#zip").val();
   form.userId = $("#user_id").val();
   form.email = $("#email").val();
   form.institutionName = $("#institution").val();
   form.institutionaddress = $("#intaddress").val();
+  form.institutioncity = $("#intcity").val();
   form.institutionstate = $("#intstate").val();
   form.institutionzip = $("#intzip").val();
   form.programName = $("#program_name").val();
   form.startDate = $("#start_date").val();
   form.endDate = $("#end_date").val();
-  form.weekDays = $("#day_week").val();
-  form.timeBlock = $("#time_block").val();
+  form.weekDays = $("#day_week")
+    .val()
+    .toString();
+  form.timeBlock = $("#time_block")
+    .val()
+    .toString();
   form.description = $("#description").val();
   form.cost = $("#cost").val();
   form.gradeFormat = $("#grade_format").val();
   form.eventType = $("#event_type").val();
-  form.reimbursementAmount = $("reimbursement_amount").val();
+  form.reimbursementAmount = $("#reimbursement_amount").val();
   form.justification = $("#justification").val();
   //TODO figure out how to handle file
-  console.log(form);
-  // $.post("/form", form);
+  $.post("/trms/reimbursement", JSON.stringify(form)).done(() => {
+    $("#first_name").val("");
+    $("#last_name").val("");
+    $("#city").val("");
+    $("#address").val("");
+    $("#state").val("");
+    $("#zip").val("");
+    $("#user_id").val("");
+    $("#email").val("");
+    $("#institution").val("");
+    $("#intaddress").val("");
+    $("#intcity").val("");
+    $("#intstate").val("");
+    $("#intzip").val("");
+    $("#program_name").val("");
+    $("#start_date").val("");
+    $("#end_date").val("");
+    $("#day_week").val("");
+    $("#time_block").val("");
+    $("#description").val("");
+    $("#cost").val("");
+    $("#grade_format").val("");
+    $("#event_type").val("");
+    $("#reimbursement_amount").val("");
+    $("#justification").val("");
+    let instance = M.Modal.getInstance($("#success_modal"));
+    instance.open();
+  });
 }

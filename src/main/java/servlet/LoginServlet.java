@@ -38,9 +38,9 @@ public class LoginServlet extends HttpServlet {
 		User tempUser = new Gson().fromJson(userJson, User.class);
 		String username = tempUser.getUsername();
 		String password = tempUser.getPassword();
-		System.out.println("Username: " + username + " Password: " + password);
+//		System.out.println("Username: " + username + " Password: " + password);
 		User user = authService.validateUser(username, password);
-		System.out.println("User: " + user);
+//		System.out.println(s"User: " + user);
 		if (user == null) {
 			response.setStatus(response.SC_UNAUTHORIZED);
 		} else {

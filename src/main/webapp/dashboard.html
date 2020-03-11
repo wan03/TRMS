@@ -40,15 +40,30 @@
     </ul>
 
     <main>
+      <div id="request_modal" class="modal">
+        <div class="modal-content">
+          <p>What information do you need?</p>
+          <div class="input-field col s12">
+            <textarea
+              id="description"
+              class="materialize-textarea"
+            ></textarea>
+            <label for="description">Description</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" id="request_button" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
       <section >
         <h4>
-          Welcome <span id="user">User</span>!
+          Welcome<span id="user"></span>!
         </h4>
       </section>
       <div class="divider"></div>
-      <section >
+      <section>
         <h6>Reimbursements:</h6>
-<table class="responsive-table">
+<table class="responsive-table highlight" id="reimbursement_table">
 <thead>
   <tr>
     <th>ID:</th>
@@ -65,8 +80,181 @@
     <th>Status:</th>
   </tr>
 </thead>
-<tbody id="reimbursement_table"></tbody>
+<tbody id="reimbursement_table_body"></tbody>
 </table>
+</section>
+<section>
+  <div class="container" id="single_reimbursement">
+    </div>
+  <div class="container" id="single_form">
+    <div class="row">
+      <div class="divider"></div>
+      <h6>Personal Information:</h6>
+    </div>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled id="first_name" type="text" class="validate" />
+            <p for="first_name">First Name</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="last_name" type="text" class="validate" />
+            <p for="last_name">Last Name</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8">
+            <input  disabled id="address" type="text" class="validate" />
+            <p for="address">Address</p>
+          </div>
+          <div class="input-field col s4">
+            <input disabled id="city" type="text" class="validate" />
+            <p for="city">City</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <input disabled id="state" type="text" class="validate" />
+            <p for="state">State</p>
+          </div>
+          <div class="input-field col s4">
+            <input disabled id="zip" type="text" class="validate" />
+            <p for="zip">Zip Code</p>
+          </div>
+          <div class="input-field col s4">
+            <input disabled id="user_id" type="text" class="validate" />
+            <p for="user_id">Employee ID</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input disabled id="email" type="email" class="validate" />
+            <p for="email">Email</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="divider"></div>
+          <h6>Information About Education:</h6>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input disabled id="institution" type="text" class="validate" />
+            <p for="institution">Name of Institution</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8">
+            <input  disabled id="intaddress" type="text" class="validate" />
+            <p for="intaddress">Address</p>
+          </div>
+          <div class="input-field col s4">
+            <input disabled id="intcity" type="text" class="validate" />
+            <p for="intcity">City</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled id="intstate" type="text" class="validate" />
+            <p for="intstate">State</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="intzip" type="text" class="validate" />
+            <p for="intzip">Zip Code</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input disabled id="program_name" type="text" class="validate" />
+            <p for="program_name">Program Name</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled
+              id="start_date"
+              type="text"
+              class="validate datepicker"
+            />
+            <p for="start_date">Start Date</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="end_date" type="text" class="validate datepicker" />
+            <p for="end_date">End Date</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled id="day_week" type="text" class="validate" />
+            <p for="day_week">Days of the Week</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="time_block" type="text" class="validate" />
+            <p for="time_block">Time Block</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea disabled
+              id="description"
+              class="materialize-textarea"
+            ></textarea>
+            <p for="description">Description</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled id="cost" type="number" class="validate" />
+            <p for="cost">Cost</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="grade_format" type="text" class="validate" />
+            <p for="grade_format">Grade Format</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input disabled id="event_type" type="text" class="validate" />
+            <p for="event_type">Type of Event</p>
+          </div>
+          <div class="input-field col s6">
+            <input
+              disabled
+              id="reimbursement_amount"
+              type="text"
+              class="validate"
+            />
+            <p for="reimbursement_amount"
+              >Potential Reimbursement</p
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea disabled
+              id="justification"
+              class="materialize-textarea"
+            ></textarea>
+            <p for="justification">Work-Related Justification</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="file-field input-field">
+            <div class="btn blue lighten-1">
+              <span>File</span>
+              <input type="file" multiple />
+            </div>
+            <div class="file-path-wrapper">
+              <input
+                class="file-path validate"
+                type="text"
+                placeholder="Upload one or more files"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row" id="single_buttons"></div>
+  </div>
 </section>
     </main>
     <footer class="page-footer blue lighten-1">

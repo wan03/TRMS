@@ -1,5 +1,6 @@
 $(document).ready(function() {
   getReimbursemets();
+  $("#request_button").on("click", sendRequest);
 });
 
 function getReimbursemets() {
@@ -60,8 +61,84 @@ function getReimbursemets() {
           submitted,
           status
         );
-        $("#reimbursement_table").append(row);
+        row.attr("rid", form.reimbursementId);
+        row.on("click", singleReimbursement);
+        $("#reimbursement_table_body").append(row);
       }
     }
+  });
+}
+
+function singleReimbursement() {
+  event.preventDefault;
+  let rid = $(this).attr("rid");
+  $.get("/trms/reimbursement/" + rid, function(data, status) {
+    if (status === "success" && data) {
+      let form = JSON.parse(data);
+      $("#first_name").val(form.firstName);
+      $("#last_name").val(form.lastName);
+      $("#city").val(form.city);
+      $("#address").val(form.address);
+      $("#state").val(form.state);
+      $("#zip").val(form.zip);
+      $("#user_id").val(form.userId);
+      $("#email").val(form.email);
+      $("#institution").val(form.institutionName);
+      $("#intaddress").val(form.institutionAddress);
+      $("#intcity").val(form.institutioncity);
+      $("#intstate").val(form.institutionstate);
+      $("#intzip").val(form.institutionzip);
+      $("#program_name").val(form.programName);
+      $("#start_date").val(
+        form.startDate.month +
+          "/" +
+          form.startDate.day +
+          "/" +
+          form.startDate.year
+      );
+      $("#end_date").val(
+        form.endDate.month + "/" + form.endDate.day + "/" + form.endDate.year
+      );
+      $("#day_week").val(form.weekDays);
+      $("#time_block").val(form.timeBlock);
+      $("#description").val(form.description);
+      $("#cost").val(form.cost);
+      $("#grade_format").val(form.gradeFormat);
+      $("#event_type").val(form.eventType);
+      $("#reimbursement_amount").val(form.reimbursementAmount);
+      $("#justification").val(form.justification);
+    }
+  });
+}
+
+function approveReimbursement() {
+  event.preventDefault;
+  let form = {};
+  let id = $(this).attr("rid");
+  console.log(id);
+  form.reimbursementId = id;
+  $.ajax({
+    method: "PUT",
+    url: "/trms/reimbursement",
+    data: JSON.stringify(form)
+  });
+}
+
+function requestInfo() {
+  let instance = M.Modal.getInstance($("#request_modal"));
+  instance.open();
+}
+
+function sendRequest() {
+  event.preventDefault;
+  let form = {};
+  form.informationRequest = $("#description").val();
+  let id = $("#requestBtn").attr("rid");
+  console.log(id);
+  form.reimbursementId = id;
+  $.ajax({
+    method: "PUT",
+    url: "/trms/reimbursement",
+    data: JSON.stringify(form)
   });
 }

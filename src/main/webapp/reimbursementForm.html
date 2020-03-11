@@ -39,6 +39,14 @@
       <li><a href="/trms/login">Login</a></li>
     </ul>
     <main>
+      <div id="success_modal" class="modal">
+        <div class="modal-content">
+          <p>Your Reimbursement Form has be succesfully submitted./p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
       <section class="container">
         <div class="row">
           <h2 class="grey-text text-darken-2">BenCO</h2>
@@ -64,9 +72,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s8">
                 <input id="address" type="text" class="validate" />
                 <label for="address">Address</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="city" type="text" class="validate" />
+                <label for="city">City</label>
               </div>
             </div>
             <div class="row">
@@ -100,9 +112,13 @@
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s8">
                 <input id="intaddress" type="text" class="validate" />
-                <label for="intaddress">Adress</label>
+                <label for="intaddress">Address</label>
+              </div>
+              <div class="input-field col s4">
+                <input id="intcity" type="text" class="validate" />
+                <label for="intcity">City</label>
               </div>
             </div>
             <div class="row">
@@ -148,10 +164,11 @@
               </div>
               <div class="input-field col s6">
                 <select multiple id="time_block">
-                  <option value="8:00am to 10:00pm">8:00am to 10:00pm</option>
+                  <option value="8:00am to 10:00pm">8:00am to 10:00am</option>
                   <option value="10:00am to 12:00m">10:00am to 12:00m</option>
                   <option value="1:00pm to 3:00pm">1:00pm to 3:00pm</option>
                   <option value="3:00pm to 5:00pm">3:00pm to 5:00pm</option>
+                  <option value="Not during work hours">Not during work hours</option>
                 </select>
                 <label>Time Block</label>
               </div>
@@ -195,15 +212,15 @@
                 <label>Type of Event</label>
               </div>
               <div class="input-field col s6">
+                <!-- <label for="reimbursement_amount"
+                  >Potential Reimbursement</label
+                > -->
                 <input
                   disabled
                   id="reimbursement_amount"
                   type="text"
                   class="validate"
                 />
-                <!-- <label for="reimbursement_amount"
-                  >Potential Reimbursement</label
-                > -->
               </div>
             </div>
             <div class="row">
