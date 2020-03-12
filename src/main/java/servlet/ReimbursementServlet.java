@@ -107,7 +107,7 @@ public class ReimbursementServlet extends HttpServlet {
 				 status = "approved by supervisor";
 			}else if (user.getUserType().equals("department head")) {
 				status = "approved by DH";
-			} else if (user.getUserType().equals("benco")) {
+			} else if (user.getUserType().equals("BenCo")) {
 				status = "approved";
 			} else {
 				status = "pending";

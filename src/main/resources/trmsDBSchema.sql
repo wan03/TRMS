@@ -73,6 +73,11 @@ FOREIGN KEY (user_id) REFERENCES Employee (empid) ON DELETE CASCADE ON UPDATE NO
     ('Hermione', 'Weasley', 'hweasley', 'pass', 'department head', 'Headmistress', 1000);
 
   INSERT INTO employee
+    (first_name, last_name, username, password, user_type, position, available_reimbursement)
+  VALUES
+    ('Katien', 'Bell', 'kbell', 'pass', 'BenCo', 'Benefit Coordinator', 1000);
+
+  INSERT INTO employee
     (first_name, last_name, username, password, user_type, position, department_head, available_reimbursement)
   VALUES
     ('Theodore', 'Nott', 'tnott', 'pass', 'supervisor', 'Potions', 1, 1000);

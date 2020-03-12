@@ -88,7 +88,32 @@ public class UserDAOImpl {
 		}
 		
 		return user;
-	}	
+	}
+	
+	public User readUser(int userId) {
+		User user = null;
+	try (Connection conn = ConnectionFactory.getConnection()){
+			
+			
+			
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM employee WHERE empid=?");
+			ps.setInt(1, userId);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				user = new Employee(rs.getInt("empid"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("username"), rs.getString("password"), rs.getString("user_type"), rs.getString("position"), rs.getString("supervisor"), rs.getString("department_head"), rs.getDouble("available_reimbursement"), rs.getDouble("pending_reimbursement"));
+		
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return user;
+	}
 	
 	public List<User> readAllUsers (){
 		
@@ -123,10 +148,28 @@ public class UserDAOImpl {
 		try (Connection conn = ConnectionFactory.getConnection()){
 		
 		
-		PreparedStatement ps = conn.prepareStatement("UPDATE employee SET ?=? WHERE id=?");
-		ps.setString(1, column);
-		ps.setString(2, value);
-		ps.setInt(4, u.getUserId());
+		PreparedStatement ps = conn.prepareStatement("UPDATE employee SET " + column + "=? WHERE empid=?");
+		ps.setString(1, value);
+		ps.setInt(2, u.getUserId());
+		
+		
+		ps.execute();
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+		
+		
+	}
+	
+	public void updateUser (User u, String column, double value) {
+		
+		try (Connection conn = ConnectionFactory.getConnection()){
+		
+		
+		PreparedStatement ps = conn.prepareStatement("UPDATE employee SET " + column + "=? WHERE empid=?");
+		ps.setDouble(1, value);
+		ps.setInt(2, u.getUserId());
 		
 		
 		ps.execute();

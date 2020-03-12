@@ -72,9 +72,12 @@ function getReimbursemets() {
 function singleReimbursement() {
   event.preventDefault;
   let rid = $(this).attr("rid");
+  $("#reimbursement_table").css("display", "none");
+  $("#single_form").css("display", "block");
   $.get("/trms/reimbursement/" + rid, function(data, status) {
     if (status === "success" && data) {
       let form = JSON.parse(data);
+      console.log(form);
       $("#first_name").val(form.firstName);
       $("#last_name").val(form.lastName);
       $("#city").val(form.city);
@@ -83,8 +86,15 @@ function singleReimbursement() {
       $("#zip").val(form.zip);
       $("#user_id").val(form.userId);
       $("#email").val(form.email);
+      $("#submitted").val(
+        form.submitted.month +
+          "/" +
+          form.submitted.day +
+          "/" +
+          form.submitted.year
+      );
       $("#institution").val(form.institutionName);
-      $("#intaddress").val(form.institutionAddress);
+      $("#intaddress").val(form.institutionaddress);
       $("#intcity").val(form.institutioncity);
       $("#intstate").val(form.institutionstate);
       $("#intzip").val(form.institutionzip);
@@ -107,6 +117,20 @@ function singleReimbursement() {
       $("#event_type").val(form.eventType);
       $("#reimbursement_amount").val(form.reimbursementAmount);
       $("#justification").val(form.justification);
+      $("#information_request").val(form.informationRequest);
+      let requestInfoBtn = $("<a>")
+        .addClass("waves-effect waves-light blue lighten-1 btn")
+        .attr("id", "requestBtn")
+        .on("click", requestInfo)
+        .text("Information Request")
+        .attr("rid", form.reimbursementId);
+      let approveBtn = $("<a>")
+        .addClass("waves-effect waves-light blue lighten-1 btn")
+        .attr("id", "approveBtn")
+        .on("click", approveReimbursement)
+        .text("Approve")
+        .attr("rid", form.reimbursementId);
+      $("#single_buttons").append(requestInfoBtn, approveBtn);
     }
   });
 }
@@ -121,6 +145,9 @@ function approveReimbursement() {
     method: "PUT",
     url: "/trms/reimbursement",
     data: JSON.stringify(form)
+  }).done(() => {
+    let instance = M.Modal.getInstance($("#approve_modal"));
+    instance.open();
   });
 }
 
@@ -132,7 +159,7 @@ function requestInfo() {
 function sendRequest() {
   event.preventDefault;
   let form = {};
-  form.informationRequest = $("#description").val();
+  form.informationRequest = $("#request_description").val();
   let id = $("#requestBtn").attr("rid");
   console.log(id);
   form.reimbursementId = id;

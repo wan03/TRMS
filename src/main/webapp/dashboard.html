@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="ISO-8859-1" />
+    <meta charset="UTF-8" />
     <!--Import Google Icon Font-->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -45,11 +45,19 @@
           <p>What information do you need?</p>
           <div class="input-field col s12">
             <textarea
-              id="description"
+              id="request_description"
               class="materialize-textarea"
             ></textarea>
-            <label for="description">Description</label>
+            <label for="request_description">Description</label>
           </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" id="request_button" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+        </div>
+      </div>
+      <div id="approve_modal" class="modal">
+        <div class="modal-content">
+          <p>Reimbursement request has been approved.</p>
         </div>
         <div class="modal-footer">
           <a href="#!" id="request_button" class="modal-close waves-effect waves-green btn-flat">Ok</a>
@@ -128,9 +136,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field col s6">
             <input disabled id="email" type="email" class="validate" />
             <p for="email">Email</p>
+          </div>
+          <div class="input-field col s6">
+            <input disabled id="submitted" type="text" class="validate" />
+            <p for="submitted">Submitted</p>
           </div>
         </div>
         <div class="row">
@@ -239,6 +251,15 @@
           </div>
         </div>
         <div class="row">
+          <div class="input-field col s12">
+            <textarea disabled
+              id="information_request"
+              class="materialize-textarea"
+            ></textarea>
+            <p for="information_request">Information Request</p>
+          </div>
+        </div>
+        <!-- <div class="row">
           <div class="file-field input-field">
             <div class="btn blue lighten-1">
               <span>File</span>
@@ -252,7 +273,7 @@
               />
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="row" id="single_buttons"></div>
   </div>
 </section>
@@ -261,7 +282,7 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text">BenCo</h5>
+            <h5 class="white-text">Hogwarts Tuition Reimbursement System</h5>
             <p class="grey-text text-lighten-4">
               Learn. Grow. Achieve.
             </p>
